@@ -1,6 +1,5 @@
 package com.docseeker.backend.model;
 
-import com.docseeker.backend.controller.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

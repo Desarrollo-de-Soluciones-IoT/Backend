@@ -1,4 +1,4 @@
-package com.docseeker.backend.controller;
+package com.docseeker.backend.model;
 
 public class User {
     private String id;
