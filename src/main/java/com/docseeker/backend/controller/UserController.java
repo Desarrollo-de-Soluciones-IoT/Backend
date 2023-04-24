@@ -4,6 +4,7 @@ import com.docseeker.backend.model.User;
 import com.docseeker.backend.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -29,13 +30,16 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public User create(@RequestBody User user) {
-        return repository.create(user);
+    public void create(@RequestBody User user) {
+        repository.save(user);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     public void update(@RequestBody User user, @PathVariable String id) {
+        if (!repository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
         repository.update(user, id);
     }
 
