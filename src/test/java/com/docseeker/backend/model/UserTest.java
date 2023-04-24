@@ -10,7 +10,7 @@ class UserTest {
     void create_new_user_patient() {
         User user = new User(
                 UUID.randomUUID().toString(),
-                "patient",
+                UserType.PATIENT,
                 "patient_test@gmail.com",
                 "testpassword",
                 "75730173",
@@ -18,6 +18,6 @@ class UserTest {
         );
 
         Assertions.assertNotNull(user);
-        Assertions.assertEquals("patient", user.getUserType());
+        Assertions.assertEquals(UserType.PATIENT, user.userType());
     }
 }
