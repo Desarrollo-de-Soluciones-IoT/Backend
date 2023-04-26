@@ -23,6 +23,7 @@ public class DoctorController {
     @PostConstruct
     private void init() {
         Doctor doctor = new Doctor();
+        doctor.setName("Na Jaemin");
         doctor.setUserType(UserType.DOCTOR);
         doctor.setEmail("doc_jaemin@gmail.com");
         doctor.setPassword("ilikecats");
