@@ -1,14 +1,14 @@
 package com.docseeker.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "patients")
-@AllArgsConstructor
+@NoArgsConstructor
 public class Patient extends User {
-    public Patient(int id, UserType userType, String email, String password, String dni, int age) {
-        super(id, userType, email, password, dni, age);
-    }
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.DETACH)
+    private List<Appointment> appointments;
 }
