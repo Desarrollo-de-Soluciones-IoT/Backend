@@ -17,6 +17,10 @@ import lombok.Setter;
 public class Doctor extends User {
     private String speciality;
     private int experienceYears;
+    private String description;
+    private int patientsAssisted;
+    private float doctorFee;
+    private String profilePhoto;
     @OneToOne(mappedBy = "doctor")
     private Appointment appointment;
 }
