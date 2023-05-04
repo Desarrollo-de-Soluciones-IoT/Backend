@@ -31,6 +31,10 @@ public class DoctorController {
         doctor.setAge(25);
         doctor.setSpeciality("Dermatology");
         doctor.setExperienceYears(3);
+        doctor.setDescription("I'm a dermatologist with 3 years of experience. I'm specialized in skin diseases.");
+        doctor.setPatientsAssisted(100);
+        doctor.setDoctorFee(50);
+        doctor.setProfilePhoto("https://racdoc.com/uploads/blog/1371_1625856299_doctor-thumb-02.jpg");
         repository.save(doctor);
     }
 
