@@ -1,5 +1,6 @@
 package com.docseeker.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,4 +24,8 @@ public class Patient extends User {
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.DETACH)
     private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "patient")
+    @JsonManagedReference
+    private List<Review> reviews;
 }

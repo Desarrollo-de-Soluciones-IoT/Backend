@@ -20,8 +20,14 @@ public class Review {
     @Column(length = 1000)
     private String description;
     private int rating;
+
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     @JsonBackReference
     private Doctor doctor;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    @JsonBackReference
+    private Patient patient;
 }
