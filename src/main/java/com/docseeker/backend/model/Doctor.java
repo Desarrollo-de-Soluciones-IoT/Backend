@@ -1,12 +1,13 @@
 package com.docseeker.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "doctors")
@@ -23,4 +24,7 @@ public class Doctor extends User {
     private String profilePhoto;
     @OneToOne(mappedBy = "doctor")
     private Appointment appointment;
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<Review> reviews;
 }
