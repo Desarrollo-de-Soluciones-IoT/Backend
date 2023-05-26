@@ -3,6 +3,7 @@ package com.docseeker.backend.controller;
 import com.docseeker.backend.model.Patient;
 import com.docseeker.backend.model.UserType;
 import com.docseeker.backend.repository.PatientRepository;
+import com.docseeker.backend.util.Util;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,9 @@ public class PatientController {
         patient.setPassword("ilikecats");
         patient.setDni("32145571E");
         patient.setAge(27);
-        patient.setHeight(180);
-        patient.setWeight(80);
+        patient.setHeight(173);
+        patient.setWeight(70);
+        patient.setBmi(Util.calculateBMI(patient.getHeight(), patient.getWeight()));
         patient.setBirthDate(new Date());
         patient.setPhoneNumber("991372341");
         repository.save(patient);
@@ -51,6 +53,7 @@ public class PatientController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public void create(@RequestBody Patient patient) {
+        patient.setBmi(Util.calculateBMI(patient.getHeight(), patient.getWeight()));
         repository.save(patient);
     }
 
