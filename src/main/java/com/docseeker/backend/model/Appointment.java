@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "appointments")
@@ -18,8 +18,10 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDateTime dateTime;
-    private String description;
+    private LocalDate date;
+    private String startTime;
+    private String endTime;
+
     @OneToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
