@@ -35,7 +35,7 @@ public class ReviewController {
         review.setDescription("Great doctor. Totally recommend him!");
         review.setRating(5);
         Doctor doctor = doctorRepository.findById(1).orElseThrow();
-        review.setDoctor(doctor);
+        review.setAssociatedDoctor(doctor);
         Patient patient = patientRepository.findById(1).orElseThrow();
         review.setCreatedBy(patient);
         repository.save(review);
@@ -52,7 +52,7 @@ public class ReviewController {
                     review.getDescription(),
                     review.getRating(),
                     review.getCreatedBy().getId(),
-                    review.getDoctor().getId()
+                    review.getAssociatedDoctor().getId()
             );
             reviewDTOs.add(reviewDTO);
         }
