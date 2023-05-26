@@ -17,8 +17,9 @@ import java.util.List;
 @Getter
 @Setter
 public class Patient extends User {
-    private int height;
-    private int weight;
+    private float height; // in cm
+    private float weight; // in kg
+    private float bmi; // Body Mass Index
     private Date birthDate;
     private String phoneNumber;
 
