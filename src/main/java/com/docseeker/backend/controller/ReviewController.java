@@ -37,7 +37,7 @@ public class ReviewController {
         Doctor doctor = doctorRepository.findById(1).orElseThrow();
         review.setDoctor(doctor);
         Patient patient = patientRepository.findById(1).orElseThrow();
-        review.setPatient(patient);
+        review.setCreatedBy(patient);
         repository.save(review);
     }
 
@@ -51,7 +51,7 @@ public class ReviewController {
                     review.getId(),
                     review.getDescription(),
                     review.getRating(),
-                    review.getPatient().getId(),
+                    review.getCreatedBy().getId(),
                     review.getDoctor().getId()
             );
             reviewDTOs.add(reviewDTO);

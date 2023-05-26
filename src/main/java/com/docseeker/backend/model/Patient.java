@@ -25,7 +25,7 @@ public class Patient extends User {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.DETACH)
     private List<Appointment> appointments;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "createdBy")
     @JsonManagedReference
     private List<Review> reviews;
 }

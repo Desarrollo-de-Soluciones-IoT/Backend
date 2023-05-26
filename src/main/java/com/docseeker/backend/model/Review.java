@@ -29,5 +29,5 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "patient_id")
     @JsonBackReference
-    private Patient patient;
+    private Patient createdBy;
 }
