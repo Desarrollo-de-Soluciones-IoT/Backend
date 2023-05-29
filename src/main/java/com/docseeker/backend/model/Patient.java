@@ -23,9 +23,6 @@ public class Patient extends User {
     private Date birthDate;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.DETACH)
-    private List<Appointment> appointments;
-
     @OneToMany(mappedBy = "createdBy")
     @JsonManagedReference
     private List<Review> reviews;
