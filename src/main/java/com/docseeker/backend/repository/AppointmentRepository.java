@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface AppointmentRepository extends ListCrudRepository<Appointment, Integer> {
-    @Query("SELECT a, d FROM Appointment a LEFT JOIN Doctor d ON a.doctor_id = d.id WHERE d.id = :doctorId")
+    @Query("SELECT a, d FROM Appointment a LEFT JOIN Doctor d ON a.doctorId = d.id WHERE d.id = :doctorId")
     List<Object[]> customGetAppointmentsByDoctorId(@Param("doctorId") int doctorId);
 }

@@ -21,11 +21,5 @@ public class Appointment {
     private LocalDate date;
     private String startTime;
     private String endTime;
-
-    @OneToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    private int doctorId;
 }
