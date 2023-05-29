@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -23,14 +23,21 @@ public class AppointmentController {
     @PostConstruct
     private void init() {
         Appointment appointment = new Appointment();
-        appointment.setDateTime(LocalDateTime.now());
-        appointment.setDescription("I have a headache");
+        appointment.setDate(LocalDate.now());
+        appointment.setStartTime("10:00");
+        appointment.setEndTime("11:00");
+        appointment.setDoctorId(1);
         repository.save(appointment);
     }
 
     @GetMapping("")
     public List<Appointment> findAll() {
         return repository.findAll();
+    }
+
+    @GetMapping("/doctor/{doctorId}")
+    public List<Object[]> findAllByDoctorId(@PathVariable int doctorId) {
+        return repository.customGetAppointmentsByDoctorId(doctorId);
     }
 
     @GetMapping("/{id}")
@@ -40,7 +47,7 @@ public class AppointmentController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("")
+    @PostMapping(path = "", consumes = "application/json")
     public void create(@RequestBody Appointment appointment) {
         repository.save(appointment);
     }
