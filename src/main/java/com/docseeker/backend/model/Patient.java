@@ -26,4 +26,14 @@ public class Patient extends User {
     @OneToMany(mappedBy = "createdBy")
     @JsonManagedReference
     private List<Review> reviews;
+
+    @ElementCollection
+    @CollectionTable(name = "patient_allergies")
+    @Column(name = "allergies")
+    private List<String> allergies;
+
+    @ElementCollection
+    @CollectionTable(name = "patient_diseases")
+    @Column(name = "diseases")
+    private List<String> diseases;
 }

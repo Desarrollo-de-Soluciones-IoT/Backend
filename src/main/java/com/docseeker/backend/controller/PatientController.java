@@ -36,6 +36,8 @@ public class PatientController {
         patient.setBmi(Util.calculateBMI(patient.getHeight(), patient.getWeight()));
         patient.setBirthDate(new Date());
         patient.setPhoneNumber("991372341");
+        patient.setAllergies(List.of("Pollen", "Dust"));
+        patient.setDiseases(List.of("Diabetes", "Hypertension"));
         repository.save(patient);
     }
 
