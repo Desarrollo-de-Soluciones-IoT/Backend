@@ -27,6 +27,7 @@ public class AppointmentController {
         appointment.setStartTime("10:00");
         appointment.setEndTime("11:00");
         appointment.setDoctorId(1);
+        appointment.setPatientId(1);
         repository.save(appointment);
     }
 
@@ -35,9 +36,9 @@ public class AppointmentController {
         return repository.findAll();
     }
 
-    @GetMapping("/doctor/{doctorId}")
-    public List<Object[]> findAllByDoctorId(@PathVariable int doctorId) {
-        return repository.customGetAppointmentsByDoctorId(doctorId);
+    @GetMapping("/doctor/{doctorId}/patient/{patientId}")
+    public List<Object[]> findAllAppointmentsByDoctorAndPatientId(@PathVariable int doctorId, @PathVariable int patientId) {
+        return repository.getAppointmentsByDoctorAndPatientId(doctorId, patientId);
     }
 
     @GetMapping("/{id}")
