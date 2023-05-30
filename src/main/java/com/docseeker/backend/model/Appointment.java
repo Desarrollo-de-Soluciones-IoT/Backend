@@ -22,4 +22,5 @@ public class Appointment {
     private String startTime;
     private String endTime;
     private int doctorId;
+    private int patientId;
 }
