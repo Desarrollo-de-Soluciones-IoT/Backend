@@ -9,6 +9,7 @@ import com.docseeker.backend.repository.PatientRepository;
 import com.docseeker.backend.repository.ReviewRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,7 +62,7 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public Review findById(int id) {
+    public Review findById(@PathVariable int id) {
         return repository.findById(id).orElseThrow();
     }
 }
