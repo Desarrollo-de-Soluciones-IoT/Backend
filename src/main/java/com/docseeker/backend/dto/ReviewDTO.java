@@ -13,6 +13,6 @@ public class ReviewDTO {
     private int id;
     private String description;
     private int rating;
-    private int patientId;
     private int doctorId;
+    private String patientName;
 }
