@@ -52,8 +52,8 @@ public class ReviewController {
                     review.getId(),
                     review.getDescription(),
                     review.getRating(),
-                    review.getCreatedBy().getId(),
-                    review.getAssociatedDoctor().getId()
+                    review.getAssociatedDoctor().getId(),
+                    review.getCreatedBy().getName()
             );
             reviewDTOs.add(reviewDTO);
         }
@@ -64,5 +64,24 @@ public class ReviewController {
     @GetMapping("/{id}")
     public Review findById(@PathVariable int id) {
         return repository.findById(id).orElseThrow();
+    }
+
+    @GetMapping("/doctor/{id}")
+    public List<ReviewDTO> findByDoctorId(@PathVariable int id) {
+        List<Review> reviews = repository.findByAssociatedDoctorId(id);
+        List<ReviewDTO> reviewDTOs = new ArrayList<>();
+
+        for (Review review : reviews) {
+            ReviewDTO reviewDTO = new ReviewDTO(
+                    review.getId(),
+                    review.getDescription(),
+                    review.getRating(),
+                    review.getAssociatedDoctor().getId(),
+                    review.getCreatedBy().getName()
+            );
+            reviewDTOs.add(reviewDTO);
+        }
+
+        return reviewDTOs;
     }
 }
