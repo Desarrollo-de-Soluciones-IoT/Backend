@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -23,7 +22,7 @@ public class AppointmentController {
     @PostConstruct
     private void init() {
         Appointment appointment = new Appointment();
-        appointment.setDate(LocalDate.now());
+        appointment.setDate("2021-10-10");
         appointment.setStartTime("10:00");
         appointment.setEndTime("11:00");
         appointment.setDoctorId(1);
