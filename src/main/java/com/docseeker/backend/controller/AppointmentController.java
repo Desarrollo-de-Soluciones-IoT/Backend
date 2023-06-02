@@ -41,7 +41,7 @@ public class AppointmentController {
     }
 
     @GetMapping("patient/{patientId}")
-    public List<Object[]> findAllAppointmentsByPatientId(@PathVariable int patientId) {
+    public List<Object> findAllAppointmentsByPatientId(@PathVariable int patientId) {
         return repository.getAppointmentsByPatientId(patientId);
     }
 
