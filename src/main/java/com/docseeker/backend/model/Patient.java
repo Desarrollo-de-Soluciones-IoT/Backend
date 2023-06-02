@@ -17,8 +17,11 @@ import java.util.List;
 @Getter
 @Setter
 public class Patient extends User {
+    @Column(nullable = true)
     private float height; // in cm
+    @Column(nullable = true)
     private float weight; // in kg
+    @Column(nullable = true)
     private float bmi; // Body Mass Index
     private Date birthDate;
     private String phoneNumber;
