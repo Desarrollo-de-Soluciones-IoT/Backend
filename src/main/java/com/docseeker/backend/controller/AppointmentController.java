@@ -40,6 +40,11 @@ public class AppointmentController {
         return repository.getAppointmentsByDoctorAndPatientId(doctorId, patientId);
     }
 
+    @GetMapping("patient/{patientId}")
+    public List<Object[]> findAllAppointmentsByPatientId(@PathVariable int patientId) {
+        return repository.getAppointmentsByPatientId(patientId);
+    }
+
     @GetMapping("/{id}")
     public Appointment findById(@PathVariable int id) {
         return repository.findById(id)
