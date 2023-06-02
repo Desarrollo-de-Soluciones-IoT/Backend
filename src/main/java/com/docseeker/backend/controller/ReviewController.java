@@ -51,6 +51,7 @@ public class ReviewController {
                     review.getDescription(),
                     review.getRating(),
                     review.getAssociatedDoctor().getId(),
+                    review.getCreatedBy().getId(),
                     review.getCreatedBy().getName()
             );
             reviewDTOs.add(reviewDTO);
@@ -75,6 +76,7 @@ public class ReviewController {
                     review.getDescription(),
                     review.getRating(),
                     review.getAssociatedDoctor().getId(),
+                    review.getCreatedBy().getId(),
                     review.getCreatedBy().getName()
             );
             reviewDTOs.add(reviewDTO);
@@ -85,7 +87,17 @@ public class ReviewController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public void create(@RequestBody Review review) {
+    public void create(@RequestBody ReviewDTO reviewDTO) {
+        Review review = new Review();
+        review.setDescription(reviewDTO.getDescription());
+        review.setRating(reviewDTO.getRating());
+
+        Patient patient = patientRepository.findById(reviewDTO.getPatientId()).orElseThrow();
+        review.setCreatedBy(patient);
+
+        Doctor doctor = doctorRepository.findById(reviewDTO.getDoctorId()).orElseThrow();
+        review.setAssociatedDoctor(doctor);
+
         repository.save(review);
     }
 }
