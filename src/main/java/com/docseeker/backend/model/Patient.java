@@ -34,9 +34,4 @@ public class Patient extends User {
     @CollectionTable(name = "patient_allergies")
     @Column(name = "allergies")
     private List<String> allergies;
-
-    @ElementCollection
-    @CollectionTable(name = "patient_diseases")
-    @Column(name = "diseases")
-    private List<String> diseases;
 }

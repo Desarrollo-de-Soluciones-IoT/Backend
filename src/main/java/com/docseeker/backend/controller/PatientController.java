@@ -37,7 +37,6 @@ public class PatientController {
         patient.setBirthDate(new Date());
         patient.setPhoneNumber("991372341");
         patient.setAllergies(List.of("Pollen", "Dust"));
-        patient.setDiseases(List.of("Diabetes", "Hypertension"));
         repository.save(patient);
     }
 
