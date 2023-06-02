@@ -14,5 +14,6 @@ public class ReviewDTO {
     private String description;
     private int rating;
     private int doctorId;
+    private int patientId;
     private String patientName;
 }
