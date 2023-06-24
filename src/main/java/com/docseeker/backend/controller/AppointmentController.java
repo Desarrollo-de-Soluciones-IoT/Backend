@@ -75,7 +75,8 @@ public class AppointmentController {
         List<Optional<Patient>> patients = new ArrayList<>();
 
         for (Integer id : patientsIds) {
-            patients.add(patientRepository.findById(id));
+            Optional<Patient> patient = patientRepository.findById(id);
+            patients.add(patient);
         }
 
         return patients;
