@@ -1,22 +1,26 @@
 package com.docseeker.backend.controller;
 
 import com.docseeker.backend.model.Appointment;
+import com.docseeker.backend.model.Patient;
 import com.docseeker.backend.repository.AppointmentRepository;
+import com.docseeker.backend.repository.PatientRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/v1/appointments")
 public class AppointmentController {
 
     private final AppointmentRepository repository;
+    private final PatientRepository patientRepository;
 
-    public AppointmentController(AppointmentRepository repository) {
+    public AppointmentController(AppointmentRepository repository, PatientRepository patientRepository) {
         this.repository = repository;
+        this.patientRepository = patientRepository;
     }
 
     @PostConstruct
@@ -41,7 +45,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/doctor/{doctorId}")
-    public List<Object> findAllAppointmentsByDoctorId(@PathVariable int doctorId) {
+    public List<Appointment> findAllAppointmentsByDoctorId(@PathVariable int doctorId) {
         return repository.getAppointmentsByDoctorId(doctorId);
     }
 
@@ -53,6 +57,28 @@ public class AppointmentController {
     @GetMapping("patient/{patientId}")
     public List<Object> findAllAppointmentsByPatientId(@PathVariable int patientId) {
         return repository.getAppointmentsByPatientId(patientId);
+    }
+
+    @GetMapping("doctor/{doctorId}/patients")
+    public List<Optional<Patient>> findAllPatientsByDoctorId(@PathVariable int doctorId) {
+        List<Appointment> doctorsAppointments = repository.getAppointmentsByDoctorId(doctorId);
+        List<Integer> patientsIds = new ArrayList<>();
+
+        for (Appointment appointment : doctorsAppointments) {
+            patientsIds.add(appointment.getPatientId());
+        }
+
+        Set<Integer> patientsIdsSet = new HashSet<>(patientsIds);
+        patientsIds.clear();
+        patientsIds.addAll(patientsIdsSet);
+
+        List<Optional<Patient>> patients = new ArrayList<>();
+
+        for (Integer id : patientsIds) {
+            patients.add(patientRepository.findById(id));
+        }
+
+        return patients;
     }
 
     @GetMapping("/{id}")

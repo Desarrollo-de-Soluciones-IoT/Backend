@@ -16,5 +16,5 @@ public interface AppointmentRepository extends ListCrudRepository<Appointment, I
 
     List<Object> getAppointmentsByPatientId(int patientId);
 
-    List<Object> getAppointmentsByDoctorId(int doctorId);
+    List<Appointment> getAppointmentsByDoctorId(int doctorId);
 }
