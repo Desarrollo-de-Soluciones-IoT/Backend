@@ -52,4 +52,12 @@ public class PrescriptionController {
         repository.save(prescription);
     }
 
+    @PostMapping("/{prescriptionId}/medicine/{medicineId}")
+    public void addMedicine(@PathVariable int prescriptionId, @PathVariable int medicineId) {
+        Prescription prescription = repository.findById(prescriptionId).orElseThrow();
+        List<Integer> medicines = prescription.getMedicines();
+        medicines.add(medicineId);
+        prescription.setMedicines(medicines);
+        repository.save(prescription);
+    }
 }
