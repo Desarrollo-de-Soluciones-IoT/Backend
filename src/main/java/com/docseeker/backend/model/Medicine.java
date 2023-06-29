@@ -20,4 +20,5 @@ public class Medicine {
     private String dosage;
     private String duration;
     private String date;
+    private int prescriptionId;
 }
