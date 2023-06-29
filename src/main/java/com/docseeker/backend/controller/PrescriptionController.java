@@ -23,6 +23,10 @@ public class PrescriptionController {
         Prescription prescription = new Prescription();
         prescription.setPatientId(1);
         prescription.setDoctorId(1);
+        prescription.setMedicineName("Paracetamol");
+        prescription.setMedicineDosage("1-1-1");
+        prescription.setMedicineDuration("1 week");
+        prescription.setDate("2023-10-10");
         repository.save(prescription);
     }
 

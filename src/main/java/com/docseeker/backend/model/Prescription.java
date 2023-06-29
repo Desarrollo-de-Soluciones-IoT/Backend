@@ -18,4 +18,8 @@ public class Prescription {
     private int id;
     private int patientId;
     private int doctorId;
+    private String medicineName;
+    private String medicineDosage;
+    private String medicineDuration;
+    private String date;
 }
