@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/medical-history")
-public class MedicalHistoryRepositoryController {
+public class MedicalHistoryController {
     private final MedicalHistoryRecordRepository repository;
 
-    public MedicalHistoryRepositoryController(MedicalHistoryRecordRepository repository) {
+    public MedicalHistoryController(MedicalHistoryRecordRepository repository) {
         this.repository = repository;
     }
 
