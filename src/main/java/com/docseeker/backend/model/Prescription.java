@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Table(name = "prescriptions")
 @AllArgsConstructor
@@ -20,9 +18,4 @@ public class Prescription {
     private int id;
     private int patientId;
     private int doctorId;
-
-    @ElementCollection
-    @CollectionTable(name = "medicine_id")
-    @Column(name = "medicines")
-    private List<Integer> medicines;
 }
