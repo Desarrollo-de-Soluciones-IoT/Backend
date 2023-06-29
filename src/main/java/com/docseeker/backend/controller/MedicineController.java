@@ -25,7 +25,13 @@ public class MedicineController {
         medicine.setDosage("1-1-1");
         medicine.setDuration("1 week");
         medicine.setDate("2023-10-10");
+        Medicine medicine2 = new Medicine();
+        medicine2.setName("Antibiotic");
+        medicine2.setDosage("3-3-2");
+        medicine2.setDuration("3 week");
+        medicine2.setDate("2023-07-05");
         repository.save(medicine);
+        repository.save(medicine2);
     }
 
     @GetMapping("")
