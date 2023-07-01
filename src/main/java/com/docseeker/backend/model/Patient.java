@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,7 +22,7 @@ public class Patient extends User {
     private float weight; // in kg
     @Column(nullable = true)
     private float bmi; // Body Mass Index
-    private Date birthDate;
+    private String birthDate;
     private String phoneNumber;
 
     @OneToMany(mappedBy = "createdBy")

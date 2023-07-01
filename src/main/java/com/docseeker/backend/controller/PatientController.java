@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,7 +33,7 @@ public class PatientController {
         patient.setHeight(173);
         patient.setWeight(70);
         patient.setBmi(Util.calculateBMI(patient.getHeight(), patient.getWeight()));
-        patient.setBirthDate(new Date());
+        patient.setBirthDate("1994-03-01");
         patient.setPhoneNumber("991372341");
         patient.setAllergies(List.of("Pollen", "Dust"));
         repository.save(patient);
