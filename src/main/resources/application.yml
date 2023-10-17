@@ -1,0 +1,24 @@
+server:
+  port: 8080
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    #    JDBC : SGDB :// HOST : PORT / DB
+    url: jdbc:postgresql://localhost:5432/docseeker
+    username: postgres
+    password: galeria123
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
