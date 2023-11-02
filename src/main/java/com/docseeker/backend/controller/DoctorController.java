@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/doctors")
+@CrossOrigin()
 public class DoctorController {
 
     private final DoctorRepository repository;
