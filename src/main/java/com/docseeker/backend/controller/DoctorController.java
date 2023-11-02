@@ -1,10 +1,12 @@
 package com.docseeker.backend.controller;
 
 import com.docseeker.backend.model.Doctor;
+import com.docseeker.backend.model.DoctorLogInResource;
 import com.docseeker.backend.model.UserType;
 import com.docseeker.backend.repository.DoctorRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -69,5 +71,15 @@ public class DoctorController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         repository.deleteById(id);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<List<Doctor>> getDoctorByDNIAndPassword(@RequestBody DoctorLogInResource doctorLoginResource) {
+        List<Doctor> doctor = repository
+                .findByDniAndPassword(
+                        doctorLoginResource.getDni(),
+                        doctorLoginResource.getPassword()
+                );
+        return ResponseEntity.ok(doctor);
     }
 }
