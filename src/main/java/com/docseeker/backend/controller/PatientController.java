@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/patients")
+@CrossOrigin()
 public class PatientController {
     private final PatientRepository repository;
     public static final String PATIENT_NOT_FOUND = "Patient not found";
