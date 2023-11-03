@@ -1,11 +1,11 @@
 package com.docseeker.backend.controller;
 
-import com.docseeker.backend.model.Patient;
-import com.docseeker.backend.model.UserType;
+import com.docseeker.backend.model.*;
 import com.docseeker.backend.repository.PatientRepository;
 import com.docseeker.backend.util.Util;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -74,5 +74,15 @@ public class PatientController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, PATIENT_NOT_FOUND);
         }
         repository.deleteById(id);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<List<Patient>> getDoctorByDNIAndPassword(@RequestBody PatientLogInResource patientLogInResource) {
+        List<Patient> patient = repository
+                .findByDniAndPassword(
+                        patientLogInResource.getDni(),
+                        patientLogInResource.getPassword()
+                );
+        return ResponseEntity.ok(patient);
     }
 }
