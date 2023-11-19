@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/prescriptions")
+@CrossOrigin()
 public class PrescriptionController {
 
     private final PrescriptionRepository repository;

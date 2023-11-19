@@ -13,6 +13,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("api/v1/appointments")
+@CrossOrigin()
 public class AppointmentController {
 
     private final AppointmentRepository repository;

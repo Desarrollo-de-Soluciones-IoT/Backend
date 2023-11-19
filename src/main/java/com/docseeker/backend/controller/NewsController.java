@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/news")
+@CrossOrigin()
 public class NewsController {
 
     private final NewsRepository repository;

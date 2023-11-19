@@ -3,15 +3,13 @@ package com.docseeker.backend.controller;
 import com.docseeker.backend.model.MedicalHistoryRecord;
 import com.docseeker.backend.repository.MedicalHistoryRecordRepository;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/medical-history")
+@CrossOrigin()
 public class MedicalHistoryController {
     private final MedicalHistoryRecordRepository repository;
 
