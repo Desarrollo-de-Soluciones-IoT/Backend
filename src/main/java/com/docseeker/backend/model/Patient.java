@@ -22,15 +22,16 @@ public class Patient extends User {
     private float weight; // in kg
     @Column(nullable = true)
     private float bmi; // Body Mass Index
+    @Column(nullable = true)
     private String birthDate;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "createdBy")
+    /*@OneToMany(mappedBy = "createdBy")
     @JsonManagedReference
-    private List<Review> reviews;
+    private List<Review> reviews;*/
 
     @ElementCollection
     @CollectionTable(name = "patient_allergies")
-    @Column(name = "allergies")
+    @Column(name = "allergies", nullable = true)
     private List<String> allergies;
 }

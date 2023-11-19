@@ -23,7 +23,7 @@ public class Doctor extends User {
     private float doctorFee;
     private String profilePhoto;
 
-    @OneToMany(mappedBy = "associatedDoctor", fetch = FetchType.EAGER)
+    /*@OneToMany(mappedBy = "associatedDoctor", fetch = FetchType.EAGER)
     @JsonManagedReference
-    private List<Review> reviews;
+    private List<Review> reviews;*/
 }
