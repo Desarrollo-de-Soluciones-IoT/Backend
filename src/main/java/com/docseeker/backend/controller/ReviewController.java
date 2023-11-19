@@ -31,6 +31,7 @@ public class ReviewController {
 
     @PostConstruct
     private void init() {
+        /*
         Review review = new Review();
         review.setDescription("Great doctor. Totally recommend him!");
         review.setRating(5);
@@ -39,6 +40,7 @@ public class ReviewController {
         Patient patient = patientRepository.findById(1).orElseThrow();
         review.setCreatedBy(patient);
         repository.save(review);
+        */
     }
 
     @GetMapping("")

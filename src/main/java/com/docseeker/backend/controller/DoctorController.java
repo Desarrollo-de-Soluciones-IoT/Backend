@@ -25,7 +25,7 @@ public class DoctorController {
 
     @PostConstruct
     private void init() {
-        Doctor doctor = new Doctor();
+        /*Doctor doctor = new Doctor();
         doctor.setName("Na Jaemin");
         doctor.setUserType(UserType.DOCTOR);
         doctor.setEmail("doc_jaemin@gmail.com");
@@ -38,7 +38,7 @@ public class DoctorController {
         doctor.setPatientsAssisted(100);
         doctor.setDoctorFee(50);
         doctor.setProfilePhoto("https://racdoc.com/uploads/blog/1371_1625856299_doctor-thumb-02.jpg");
-        repository.save(doctor);
+        repository.save(doctor);*/
     }
 
     @GetMapping("")

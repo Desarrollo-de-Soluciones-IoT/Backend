@@ -24,6 +24,7 @@ public class PatientController {
 
     @PostConstruct
     private void init() {
+        /*
         Patient patient = new Patient();
         patient.setName("Jeno");
         patient.setUserType(UserType.PATIENT);
@@ -38,6 +39,7 @@ public class PatientController {
         patient.setPhoneNumber("991372341");
         patient.setAllergies(List.of("Pollen", "Dust"));
         repository.save(patient);
+        */
     }
 
     @GetMapping("")
