@@ -78,8 +78,8 @@ public class PatientController {
     }
 
     @PostMapping("login")
-    public ResponseEntity<List<Patient>> getDoctorByDNIAndPassword(@RequestBody PatientLogInResource patientLogInResource) {
-        List<Patient> patient = repository
+    public ResponseEntity<Patient> getDoctorByDNIAndPassword(@RequestBody PatientLogInResource patientLogInResource) {
+        Patient patient = repository
                 .findByDniAndPassword(
                         patientLogInResource.getDni(),
                         patientLogInResource.getPassword()
