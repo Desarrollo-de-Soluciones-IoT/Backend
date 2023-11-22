@@ -5,6 +5,7 @@ import com.docseeker.backend.repository.PulseRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -12,9 +13,11 @@ import java.util.List;
 @CrossOrigin()
 public class PulseController {
     private final PulseRepository repository;
+    private LocalDateTime currentTime;
 
     public PulseController(PulseRepository repository) {
         this.repository = repository;
+        this.currentTime = LocalDateTime.now();
     }
 
     @GetMapping("")
@@ -30,6 +33,7 @@ public class PulseController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public void create(@RequestBody Pulse pulse) {
+        pulse.setTimestamp(currentTime.now().toString());;
         repository.save(pulse);
     }
 }

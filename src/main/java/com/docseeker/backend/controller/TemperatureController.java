@@ -5,6 +5,7 @@ import com.docseeker.backend.repository.TemperatureRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -12,9 +13,11 @@ import java.util.List;
 @CrossOrigin()
 public class TemperatureController {
     private final TemperatureRepository repository;
+    private LocalDateTime currentTime;
 
     public TemperatureController(TemperatureRepository repository) {
         this.repository = repository;
+        this.currentTime = LocalDateTime.now();
     }
 
     @GetMapping("")
@@ -30,6 +33,7 @@ public class TemperatureController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public void create(@RequestBody Temperature temperature) {
+        temperature.setTimestamp(currentTime.now().toString());
         repository.save(temperature);
     }
 }
